@@ -22,7 +22,7 @@ async function bootstrap() {
   const configService = app.get<ConfigService>(ConfigService);
 
   const config = new DocumentBuilder()
-    .setTitle('Simple Bank ')
+    .setTitle('Simple Bank')
     .setDescription('Simple Bank API')
     .setVersion('2.0')
     .setExternalDoc('Postman Collection', '/docs-json')

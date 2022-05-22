@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
-class UserAccount {
+export class AccountEntity {
   @PrimaryGeneratedColumn()
   public account_id: number;
 
@@ -10,5 +10,3 @@ class UserAccount {
   @Column()
   public updated_at: Date;
 }
-
-export default UserAccount;

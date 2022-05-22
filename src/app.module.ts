@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { configValidate } from './utils/config.validate';
 import { DatabaseModule } from './database/database.module';
+import { AccountModule } from './account/account.module';
 
 @Module({})
 export class AppModule {
@@ -14,6 +15,7 @@ export class AppModule {
         validate: shouldValidate && configValidate,
       }),
       DatabaseModule,
+      AccountModule,
     ];
     const controllers = [AppController];
     const providers = [AppService];
