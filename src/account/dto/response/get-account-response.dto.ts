@@ -16,5 +16,5 @@ export class GetAccountBalanceResponseDto {
     example: new Date(),
     type: String,
   })
-  updated_at: Date;
+  updatedAt: Date;
 }

@@ -7,9 +7,17 @@ export class AccountEntity {
   @Column({
     type: 'decimal',
     precision: 10,
-    scale: 2,
+    scale: 4,
     default: 0.0,
     nullable: false,
+    transformer: {
+      to(value: any): any {
+        return value;
+      },
+      from(value: any): any {
+        return parseFloat(value);
+      },
+    },
   })
   public balance: number;
 

@@ -1,14 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class GetAccountBalanceParamDto {
-  @IsNumber()
+  @IsString()
   @ApiProperty({
     description: 'accountId',
     example: 1,
-    type: Number,
+    type: String,
   })
-  accountId: number;
+  accountId: string;
 }
 
 export class PostAccountBalanceBodyDto {

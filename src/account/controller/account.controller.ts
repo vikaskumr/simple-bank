@@ -4,6 +4,7 @@ import {
   GetAccountBalanceParamDto,
   PostAccountBalanceBodyDto,
 } from '../dto/request/get-account-balance-param.dto';
+import { TransferMoneyRequestDto } from '../dto/request/transfer-money-request-dto';
 import { GetAccountBalanceResponseDto } from '../dto/response/get-account-response.dto';
 import { AccountI } from '../models/account.interface';
 import { AccountService } from '../service/account.service';
@@ -14,7 +15,7 @@ export class AccountController {
 
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'fetched GeoJSON features successfully from openstreetmap api',
+    description: 'add account in database',
     type: () => GetAccountBalanceResponseDto,
   })
   @ApiResponse({
@@ -31,7 +32,7 @@ export class AccountController {
 
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'fetched GeoJSON features successfully from openstreetmap api',
+    description: 'fetched all accounts',
     type: () => GetAccountBalanceResponseDto,
   })
   @ApiResponse({
@@ -46,7 +47,7 @@ export class AccountController {
 
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'fetched GeoJSON features successfully from openstreetmap api',
+    description: 'fetched balance of particular account',
     type: () => GetAccountBalanceResponseDto,
   })
   @ApiResponse({
@@ -59,5 +60,22 @@ export class AccountController {
     @Param() { accountId }: GetAccountBalanceParamDto,
   ): Promise<AccountI> {
     return this.accountService.fetchBalance(accountId);
+  }
+
+  @Post('/transferMoney')
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'transfer money between 2 different accounts',
+    type: () => GetAccountBalanceResponseDto,
+  })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description:
+      'Validation failed or some requirements were not fully satisfied',
+  })
+  public async transferMoney(
+    @Body() { fromAccountId, toAccountId, money }: TransferMoneyRequestDto,
+  ): Promise<void> {
+    return this.accountService.transferMoney(toAccountId, fromAccountId, money);
   }
 }
