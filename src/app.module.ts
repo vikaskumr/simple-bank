@@ -3,7 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 import { configValidate } from './utils/config.validate';
 import { DatabaseModule } from './database/database.module';
 import { AccountModule } from './account/account.module';
-import { AccountController } from './account/controller/account.controller';
 import { APP_FILTER, APP_PIPE } from '@nestjs/core';
 import { AllExceptionsFilter } from './utils/filters/all-exceptions.filter';
 
@@ -18,7 +17,7 @@ export class AppModule {
       DatabaseModule,
       AccountModule,
     ];
-    const controllers = [AccountController];
+    const controllers = [];
     const providers = [
       {
         provide: APP_FILTER,

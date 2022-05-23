@@ -24,9 +24,9 @@ export class AccountController {
   })
   @Post()
   public async add(
-    @Body() account: PostAccountBalanceBodyDto,
+    @Body() accountDetails: PostAccountBalanceBodyDto,
   ): Promise<AccountI> {
-    return this.accountService.add(account);
+    return this.accountService.add(accountDetails);
   }
 
   @ApiResponse({

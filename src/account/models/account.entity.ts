@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 @Entity()
 export class AccountEntity {
-  @PrimaryGeneratedColumn()
-  public account_id: number;
+  @PrimaryColumn()
+  public accountId: string;
 
   @Column({
     type: 'decimal',
@@ -14,5 +14,5 @@ export class AccountEntity {
   public balance: number;
 
   @Column()
-  public updated_at: Date;
+  public updatedAt: Date;
 }

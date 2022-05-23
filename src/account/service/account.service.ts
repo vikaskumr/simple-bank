@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { AccountEntity } from '../models/account.entity';
 import { AccountI } from '../models/account.interface';
-
+import { v4 as uuidv4 } from 'uuid';
 @Injectable()
 export class AccountService {
   public logger;
@@ -14,9 +14,10 @@ export class AccountService {
     this.logger = new Logger(AccountService.name);
   }
 
-  public async add(account: AccountI): Promise<AccountI> {
+  public async add(accountDetails: AccountI): Promise<AccountI> {
     try {
-      return this.accountRepository.save(account);
+      accountDetails.accountId = uuidv4();
+      return this.accountRepository.save(accountDetails);
     } catch (error) {
       this.logger.log('failed to add account', error);
       throw error;

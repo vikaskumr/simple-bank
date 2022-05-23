@@ -1,5 +1,5 @@
 export interface AccountI {
-  account_id?: number;
+  accountId?: string;
   balance: number;
-  updated_at: Date;
+  updatedAt: Date;
 }

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDate, IsDecimal, IsNumber } from 'class-validator';
+import { IsNumber } from 'class-validator';
 
 export class GetAccountBalanceParamDto {
   @IsNumber()
@@ -25,5 +25,5 @@ export class PostAccountBalanceBodyDto {
     example: new Date(),
     type: String,
   })
-  updated_at: Date;
+  updatedAt: Date;
 }
