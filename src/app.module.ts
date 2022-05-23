@@ -1,10 +1,11 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { configValidate } from './utils/config.validate';
 import { DatabaseModule } from './database/database.module';
 import { AccountModule } from './account/account.module';
+import { AccountController } from './account/controller/account.controller';
+import { APP_FILTER, APP_PIPE } from '@nestjs/core';
+import { AllExceptionsFilter } from './utils/filters/all-exceptions.filter';
 
 @Module({})
 export class AppModule {
@@ -17,8 +18,17 @@ export class AppModule {
       DatabaseModule,
       AccountModule,
     ];
-    const controllers = [AppController];
-    const providers = [AppService];
+    const controllers = [AccountController];
+    const providers = [
+      {
+        provide: APP_FILTER,
+        useClass: AllExceptionsFilter,
+      },
+      {
+        provide: APP_PIPE,
+        useClass: ValidationPipe,
+      },
+    ];
     return {
       module: AppModule,
       imports,

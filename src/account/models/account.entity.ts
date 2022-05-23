@@ -4,7 +4,13 @@ export class AccountEntity {
   @PrimaryGeneratedColumn()
   public account_id: number;
 
-  @Column()
+  @Column({
+    type: 'decimal',
+    precision: 10,
+    scale: 2,
+    default: 0.0,
+    nullable: false,
+  })
   public balance: number;
 
   @Column()
