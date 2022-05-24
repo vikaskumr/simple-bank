@@ -6,10 +6,6 @@ import { AccountEntity } from '../models/account.entity';
 jest.mock('node-fetch');
 import { Repository } from 'typeorm';
 
-const accountServiceMock = {
-  isInitialized: jest.fn(),
-};
-
 const accountRepository = {
   isInitialized: jest.fn(),
 };
@@ -21,7 +17,7 @@ const accountResponse: AccountI = {
 };
 
 const accountResponseError = {
-  error: 'account nor found',
+  error: 'account not found',
   code: 404,
 };
 
